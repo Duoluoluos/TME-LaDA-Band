@@ -1,0 +1,37 @@
+# Configuration for the MuLaN conditioning encoder used by LaDA-Band.
+# By default, get_mulan.py resolves the Hugging Face cache-style assets from
+# $LADA_PRETRAINED_ROOT/hub. Set model.pretraind_root to override that location.
+
+model:
+  mulan:
+    dim_latent: 128
+    decoupled_contrastive_learning: true
+    hierarchical_contrastive_loss: false
+    hierarchical_contrastive_loss_layers: null
+    sigmoid_contrastive_loss: false
+
+  pretraind_root: null
+  audio_model:
+    name: models--m-a-p--MERT-v1-330M
+    model_dim: 1024
+    use_layer_idx: 6
+  text_model:
+    name: models--xlm-roberta-base
+
+  audio_transformer:
+    dim: 768
+    tf_depth: 8
+    heads: 8
+    dim_head: 64
+    attn_dropout: 0.0
+    ff_dropout: 0.0
+    ff_mult: 4
+  text_transformer:
+    dim: 768
+    tf_depth: 8
+    max_seq_len: 1024
+    dim_head: 64
+    heads: 8
+    attn_dropout: 0.0
+    ff_dropout: 0.0
+    ff_mult: 4

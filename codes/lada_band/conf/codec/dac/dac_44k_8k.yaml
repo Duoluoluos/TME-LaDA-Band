@@ -1,0 +1,11 @@
+# @package _global_
+
+codec_cache: false
+codec:
+  name: dac
+  dac:
+    model_type: 44khz
+    model_bitrate: 8kbps
+    sr: 44100
+    n_codebooks: 9
+    codebook_size: 1024

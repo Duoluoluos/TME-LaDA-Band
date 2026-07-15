@@ -1,0 +1,12 @@
+# @package _global_
+
+model:
+  name: llama
+  llama:
+    is_decoder: false
+    hidden_size: 1024
+    num_hidden_layers: 20
+    num_attention_heads: 16
+    vocab_size: 1
+    attention_dropout: 0.1
+    intermediate_size: 2730

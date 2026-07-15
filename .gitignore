@@ -1,0 +1,71 @@
+# Prevent accidental commits of generated or local audio files.
+*.aac
+*.aif
+*.aiff
+*.alac
+*.amr
+*.ape
+*.au
+*.caf
+*.flac
+*.m4a
+*.mid
+*.midi
+*.mp3
+*.oga
+*.ogg
+*.opus
+*.snd
+*.wav
+*.wave
+*.wma
+
+# Python, notebooks, and local tooling.
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+
+# Generated artifacts, data, and model weights.
+/outputs/
+/runs/
+/wandb/
+/checkpoints/
+/data/
+/models/
+/demo_output/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.bin
+
+# Generated code-release artifacts.
+/codes/exp/
+/codes/checkpoints/
+/codes/wandb/
+/codes/demo_output/
+/codes/**/outputs/
+/codes/**/.hydra/
+/codes/clamp3/cache/
+/codes/clamp3/temp/
+/codes/MuCodec/reconstructed/
+# Local utility extensions are intentionally excluded from public releases.
+/codes/lada_band/utils/*/
+/codes/lada_band/model/semantic_extractor/tango_descript/musiclm-pytorch/
+*.log

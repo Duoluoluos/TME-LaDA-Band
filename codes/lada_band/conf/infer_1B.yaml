@@ -1,0 +1,89 @@
+# Public direct-inference configuration for the released 1B backbone.
+# Set LADA_PRETRAINED_ROOT to a directory containing the required auxiliary
+# assets before launching codes/infer.py. Dataset paths are deliberately null:
+# direct inference uses --vocal_fps instead of dataset metadata files.
+pretrained_root: null
+checkpoint_root: null
+wandb_name: lada_band_inference
+seed: 114514
+ref_duration: 184.32
+clamp3_path: clamp3/weights_clamp3_saas_h_size_768_t_model_FacebookAI_xlm-roberta-base_t_length_128_a_size_768_a_layers_12_a_length_128_s_size_768_s_layers_12_p_size_64_p_length_512.pth
+clamp_dropout: 0.5
+clamp_cond: prefix
+data:
+  name: audio_text_data_v2
+  have_subdir: false
+  train_fp: null
+  val_fp: null
+  meta_fp: null
+  duration: 163.84
+  sr: 48000
+  channels: 2
+  voc_dir: null
+  voc_suffix: m4a
+  acc_dir: null
+  acc_suffix: m4a
+  noise:
+    name: off
+    sigma: 0.0
+  batch_size: 1
+  num_workers: 8
+  voc:
+    size: 16384
+  acc:
+    size: 16384
+  special_tokens:
+    voc_pad: 16384
+    acc_mask: 16384
+    acc_pad: 16385
+model:
+  llama:
+    json_path: Llama-3.2-1B
+    is_decoder: false
+    head_dim: 64
+    hidden_act: silu
+    initializer_range: 0.02
+    intermediate_size: 8192
+    hidden_size: 2048
+    num_hidden_layers: 16
+    num_attention_heads: 32
+    num_key_value_heads: 8
+    vocab_size: 1
+    attention_dropout: 0.1
+  name: llama
+moa:
+  enabled: false
+optim:
+  name: adamw
+  betas: [0.9, 0.999]
+  eps: 1.0e-08
+  weight_decay: 0.01
+  lr: 1.0e-05
+  scheduler:
+    name: cos
+    warmup: 5000
+    num_training_steps: 300000
+train:
+  max_steps: 10000
+  check_val_every_n_steps: 1500
+  acc_grad: 2
+  grad_clip: 1.0
+  precision: bf16-mixed
+  force_fp32: false
+wandb: false
+loss:
+  name: ce
+  label_smoothing: 0.0
+  rtd:
+    enabled: true
+    weight: 0.2
+    sampling: argmax
+    temperature: 1.0
+config_root: lada_band/conf
+codec_path: mucodec/mucodec.pt
+codec_layer_num: 7
+project: llada
+l_ckpt_fp: null
+ckpt_dir: null
+resume_ckpt_fp: null
+resume_training: false

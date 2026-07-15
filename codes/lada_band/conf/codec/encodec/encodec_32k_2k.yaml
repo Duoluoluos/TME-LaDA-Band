@@ -1,0 +1,11 @@
+# @package _global_
+
+codec_cache: false
+codec:
+  name: encodec
+  encodec:
+    model_path: facebook/encodec_32khz
+    sr: 32000
+    bw: 2.2
+    n_codebooks: 4
+    codebook_size: 2048
